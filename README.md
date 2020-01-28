@@ -1,5 +1,14 @@
 [![Build Status](https://travis-ci.com/smart-home-oss/house-manager.svg?branch=master)](https://travis-ci.com/smart-home-oss/house-manager)
 
+Integrate travis with sonarcloud:
+- https://sivalabs.in/2018/01/ci-cd-springboot-applications-using-travis-ci/
+- https://docs.travis-ci.com/user/encryption-keys/
+- [https://medium.com/@felippepuhle/getting-started-with-spring-boot-travis-and-heroku-4562a723fd0e](https://medium.com/@felippepuhle/getting-started-with-spring-boot-travis-and-heroku-4562a723fd0e)
+
+`travis encrypt SONAR_KEY_SECURE="222...9999" --pro`
+
+-----------
+
 @RestController - stereotype, annotation, AOP
 
 @Autowired, dependency injection, constructor injection
