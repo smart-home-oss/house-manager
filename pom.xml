@@ -19,7 +19,6 @@
 		<sonar.projectKey>smart-home-oss_house-manager</sonar.projectKey>
 		<sonar.organization>smart-home-oss</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.login>1e47300dfb8ec9db6cbf6e8804a1ccadf0b61b5f</sonar.login>
 	</properties>
 
 	<dependencies>
