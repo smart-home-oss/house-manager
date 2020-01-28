@@ -13,8 +13,8 @@ public class DeviceController {
     private final DeviceService DeviceService;
 
     @PostMapping
-    public Device create(@RequestBody Device Device) {
-        return DeviceService.create(Device);
+    public Device create(@RequestBody Device device) {
+        return DeviceService.create(device);
     }
 
     @RequestMapping("{id}")
@@ -23,8 +23,8 @@ public class DeviceController {
     }
 
     @PutMapping("{id}")
-    public Device update(@PathVariable Long id, @RequestBody Device Device) {
-        return DeviceService.update(id, Device);
+    public Device update(@PathVariable Long id, @RequestBody Device device) {
+        return DeviceService.update(id, device);
     }
 
     @DeleteMapping(value = "{id}")
