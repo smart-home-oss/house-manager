@@ -18,7 +18,7 @@ public class RoomController {
         return roomService.create(room);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public Room show(@PathVariable Long id) {
         return roomService.read(id);
     }

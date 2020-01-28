@@ -17,7 +17,7 @@ public class DeviceController {
         return DeviceService.create(device);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public Device show(@PathVariable Long id) {
         return DeviceService.read(id);
     }

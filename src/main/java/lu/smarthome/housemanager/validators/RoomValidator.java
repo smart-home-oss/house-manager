@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RoomValidator {
-    private Room room;
 
     public void validate(Room room) {
         if (room.getName() == null) {

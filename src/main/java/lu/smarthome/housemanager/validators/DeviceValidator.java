@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DeviceValidator {
-    private Device device;
 
     public void validate(Device device) {
         if (device.getName() == null) {
