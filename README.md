@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/smart-home-oss/house-manager.svg?branch=master)](https://travis-ci.com/smart-home-oss/house-manager)
+
 @RestController - stereotype, annotation, AOP
 
 @Autowired, dependency injection, constructor injection
