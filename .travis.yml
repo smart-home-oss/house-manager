@@ -1,5 +1,5 @@
 language: java
-jdk: openjdk8
+jdk: openjdk11
 
 cache:
   directories:
@@ -16,4 +16,4 @@ addons:
       secure: $SONAR_KEY_SECURE
 
 script:
-  - ./mvnw verify sonar:sonar
+  - mvn verify sonar:sonar
