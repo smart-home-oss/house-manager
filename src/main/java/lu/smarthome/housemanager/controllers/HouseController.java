@@ -22,25 +22,25 @@ public class HouseController {
     }
 
     @GetMapping(path = "{id}")
-    public House getHouseById(@PathVariable Long id) {
+    public House findById(@PathVariable Long id) {
         return houseService.getHouseById(id);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
-    public List<House> getHouses(@RequestParam(required = false, defaultValue = "0") int page,
-                                 @RequestParam(required = false, defaultValue = "10") int size) {
+    public List<House> findByPage(@RequestParam(required = false, defaultValue = "0") int page,
+                                  @RequestParam(required = false, defaultValue = "10") int size) {
 
         return houseService.getHouses(page, size);
     }
 
     @PutMapping(path = "{id}")
-    public House updateHouseById(@PathVariable Long id, @RequestBody House house) {
+    public House updateById(@PathVariable Long id, @RequestBody House house) {
         return houseService.updateHouseById(id, house);
     }
 
     @DeleteMapping(path = "{id}")
-    public void deleteHouseById(@PathVariable Long id){
+    public void deleteById(@PathVariable Long id){
         houseService.deleteHouseById(id);
     }
 

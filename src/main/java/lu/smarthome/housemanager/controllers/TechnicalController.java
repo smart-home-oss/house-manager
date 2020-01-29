@@ -14,7 +14,12 @@ public class TechnicalController {
     private String defaultApiSpecUri;
 
     @GetMapping("/api")
-    public RedirectView redirectWithUsingRedirectView() {
+    public RedirectView redirectApiToSwagger() {
+        return new RedirectView("/webjars/swagger-ui/index.html?url=" + defaultApiSpecUri + ".yml");
+    }
+
+    @GetMapping
+    public RedirectView redirectRootToSwagger() {
         return new RedirectView("/webjars/swagger-ui/index.html?url=" + defaultApiSpecUri + ".yml");
     }
 

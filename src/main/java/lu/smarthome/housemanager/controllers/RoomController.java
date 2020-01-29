@@ -19,17 +19,17 @@ public class RoomController {
     }
 
     @RequestMapping("{id}")
-    public Room show(@PathVariable Long id) {
+    public Room findById(@PathVariable Long id) {
         return roomService.read(id);
     }
 
     @PutMapping("{id}")
-    public Room update(@PathVariable Long id, @RequestBody Room room) {
+    public Room updateById(@PathVariable Long id, @RequestBody Room room) {
         return roomService.update(id, room);
     }
 
     @DeleteMapping(value = "{id}")
-    public void destroy(@PathVariable Long id) {
+    public void deleteById(@PathVariable Long id) {
         roomService.delete(id);
     }
 }
