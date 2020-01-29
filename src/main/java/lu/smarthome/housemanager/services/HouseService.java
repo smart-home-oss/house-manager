@@ -5,7 +5,6 @@ import lu.smarthome.housemanager.domain.House;
 import lu.smarthome.housemanager.exceptions.HouseNotFoundException;
 import lu.smarthome.housemanager.repositories.HouseRepository;
 import lu.smarthome.housemanager.validators.HouseValidator;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
