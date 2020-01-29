@@ -18,16 +18,10 @@ public class HouseService {
     private final HouseValidator houseValidator;
     private final HouseRepository houseRepository;
 
-    public House create(House house) {
+    public House createOrUpdate(House house) {
         houseValidator.validate(house);
 
         return houseRepository.save(house);
-    }
-
-    public House getHouseById(Long id) {
-        return houseRepository
-                .findById(id)
-                .orElseThrow(() -> new HouseNotFoundException(id));
     }
 
     public House updateHouseById(Long id, House house){
@@ -52,7 +46,13 @@ public class HouseService {
             existingHouse.setStreet(house.getStreet());
         }
 
-        return houseRepository.save(existingHouse);
+        return createOrUpdate(existingHouse);
+    }
+
+    public House getHouseById(Long id) {
+        return houseRepository
+                .findById(id)
+                .orElseThrow(() -> new HouseNotFoundException(id));
     }
 
     public void deleteHouseById(Long id){

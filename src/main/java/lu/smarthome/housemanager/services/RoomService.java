@@ -14,35 +14,35 @@ public class RoomService {
     private final RoomRepository roomRepository;
     private final RoomValidator roomValidator;
 
-    public Room create(Room room) {
+    public Room createOrUpdate(Room room) {
         roomValidator.validate(room);
 
         return roomRepository.save(room);
     }
 
-    public Room read(Long roomId) throws NoRoomFoundException {
-        return roomRepository.findById(roomId).orElseThrow(() -> new NoRoomFoundException("No room found with Id " + roomId));
-    }
+    public Room updateById(Long id, Room room) {
+        Room existingRoom = roomRepository
+                .findById(id)
+                .orElseThrow(() -> new NoRoomFoundException(id));
 
-    public Room update(Long id, Room room) {
-        Room existingRoom = roomRepository.findById(id).get();
-
-        if (existingRoom != null) {
-
-            if (room.getName() != null) {
-                existingRoom.setName(room.getName());
-            }
-
-            if (room.getHouseId() != null) {
-                existingRoom.setHouseId(room.getHouseId());
-            }
-            return roomRepository.save(existingRoom);
+        if (room.getName() != null) {
+            existingRoom.setName(room.getName());
         }
 
-        return roomRepository.save(room);
+        if (room.getHouseId() != null) {
+            existingRoom.setHouseId(room.getHouseId());
+        }
+
+        return createOrUpdate(room);
     }
 
-    public void delete(Long id) {
+    public Room findById(Long roomId) {
+        return roomRepository
+                .findById(roomId)
+                .orElseThrow(() -> new NoRoomFoundException(roomId));
+    }
+
+    public void deleteById(Long id) {
         roomRepository.deleteById(id);
     }
 }

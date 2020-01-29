@@ -6,8 +6,6 @@ import lu.smarthome.housemanager.validators.HouseValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -36,7 +34,7 @@ class HouseServiceTest {
             return house;
         });
 
-        final House result = houseService.create(house);
+        final House result = houseService.createOrUpdate(house);
 
         assertNotNull(result);
         assertNotNull(result.getId());

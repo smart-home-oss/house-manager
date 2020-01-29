@@ -15,21 +15,21 @@ public class RoomController {
 
     @PostMapping
     public Room create(@RequestBody Room room) {
-        return roomService.create(room);
+        return roomService.createOrUpdate(room);
     }
 
     @RequestMapping("{id}")
     public Room findById(@PathVariable Long id) {
-        return roomService.read(id);
+        return roomService.findById(id);
     }
 
     @PutMapping("{id}")
     public Room updateById(@PathVariable Long id, @RequestBody Room room) {
-        return roomService.update(id, room);
+        return roomService.updateById(id, room);
     }
 
     @DeleteMapping(value = "{id}")
     public void deleteById(@PathVariable Long id) {
-        roomService.delete(id);
+        roomService.deleteById(id);
     }
 }

@@ -18,7 +18,7 @@ public class HouseController {
 
     @PostMapping
     public House create(@RequestBody House house) {
-        return houseService.create(house);
+        return houseService.createOrUpdate(house);
     }
 
     @GetMapping(path = "{id}")
