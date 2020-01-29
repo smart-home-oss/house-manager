@@ -16,4 +16,4 @@ addons:
       secure: $SONAR_KEY_SECURE
 
 script:
-  - mvn verify sonar:sonar
+  - mvn verify sonar:sonar -q
