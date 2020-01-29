@@ -5,7 +5,10 @@ import lu.smarthome.housemanager.domain.Room;
 import lu.smarthome.housemanager.exceptions.NoRoomFoundException;
 import lu.smarthome.housemanager.repositories.RoomRepository;
 import lu.smarthome.housemanager.validators.RoomValidator;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +47,21 @@ public class RoomService {
 
     public void deleteById(Long id) {
         roomRepository.deleteById(id);
+    }
+
+    public List<Room> getPage(int page, int size) {
+        roomValidator.validatePageParams(page, size);
+
+        return roomRepository
+                .findAll(PageRequest.of(page, size))
+                .getContent();
+    }
+
+    public List<Room> getPageByHouseId(long houseId, int page, int size) {
+        roomValidator.validatePageParams(page, size);
+
+        return roomRepository
+                .findAllByHouseId(houseId, PageRequest.of(page, size))
+                .getContent();
     }
 }

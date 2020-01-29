@@ -1,9 +1,13 @@
 package lu.smarthome.housemanager.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lu.smarthome.housemanager.domain.House;
 import lu.smarthome.housemanager.domain.Room;
 import lu.smarthome.housemanager.services.RoomService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,9 +22,22 @@ public class RoomController {
         return roomService.createOrUpdate(room);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public Room findById(@PathVariable Long id) {
         return roomService.findById(id);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
+    public List<Room> findByPage(@RequestParam(required = false, defaultValue = "0") int page,
+                                  @RequestParam(required = false, defaultValue = "10") int size,
+                                  @RequestParam(required = false) Long houseId) {
+
+        if(houseId == null) {
+            return roomService.getPage(page, size);
+        } else {
+            return roomService.getPageByHouseId(houseId, page, size);
+        }
     }
 
     @PutMapping("{id}")

@@ -1,13 +1,17 @@
 package lu.smarthome.housemanager.validators;
 
+import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.domain.Room;
+import lu.smarthome.housemanager.exceptions.BadPageException;
 import lu.smarthome.housemanager.exceptions.BadRoomNameException;
 import lu.smarthome.housemanager.exceptions.NoHouseAssignedRoomException;
+import lu.smarthome.housemanager.params.RoomParams;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class RoomValidator {
-    private Room room;
+    private final RoomParams roomParams;
 
     public void validate(Room room) {
         if (room.getName() == null) {
@@ -15,6 +19,20 @@ public class RoomValidator {
         }
         if (room.getHouseId() == null) {
             throw new NoHouseAssignedRoomException("This room has not been assigned to a house");
+        }
+    }
+
+    public void validatePageParams(int page, int size) {
+        if(page < 0) {
+            throw new BadPageException("Page number should be equal or bigger than zero, page: " + page);
+        }
+
+        if(size < 0) {
+            throw new BadPageException("Page size should be equal or bigger than zero, size: " + size);
+        }
+
+        if(size > roomParams.getMaxSize()) {
+            throw new BadPageException("Page size should be equal or bigger than zero, size: " + size);
         }
     }
 }

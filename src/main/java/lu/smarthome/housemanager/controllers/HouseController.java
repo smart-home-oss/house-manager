@@ -31,7 +31,7 @@ public class HouseController {
     public List<House> findByPage(@RequestParam(required = false, defaultValue = "0") int page,
                                   @RequestParam(required = false, defaultValue = "10") int size) {
 
-        return houseService.getHouses(page, size);
+        return houseService.getPage(page, size);
     }
 
     @PutMapping(path = "{id}")

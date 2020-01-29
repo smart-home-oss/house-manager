@@ -59,9 +59,9 @@ public class HouseService {
         houseRepository.deleteById(id);
     }
 
-    public List<House> getHouses(int page, int size) {
-        final Page<House> result = houseRepository.findAll(PageRequest.of(page, size));
-
-        return result.getContent();
+    public List<House> getPage(int page, int size) {
+        return houseRepository
+                .findAll(PageRequest.of(page, size))
+                .getContent();
     }
 }
