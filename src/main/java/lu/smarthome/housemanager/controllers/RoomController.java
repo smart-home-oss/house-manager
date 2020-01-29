@@ -1,7 +1,6 @@
 package lu.smarthome.housemanager.controllers;
 
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.domain.House;
 import lu.smarthome.housemanager.domain.Room;
 import lu.smarthome.housemanager.services.RoomService;
 import org.springframework.http.HttpStatus;
