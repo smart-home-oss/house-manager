@@ -59,4 +59,18 @@ class HouseServiceTest {
 
         assertThrows(HouseNotFoundException.class, () -> houseService.update(Long.MAX_VALUE, new House()));
     }
+
+    @Test
+    void readNotFound() {
+        when(houseRepository.findById(any())).thenAnswer(onMock -> Optional.empty());
+        assertThrows(HouseNotFoundException.class, () -> houseService.read(Long.MAX_VALUE));
+    }
+
+    @Test
+    void read() {
+        House h = new House();
+        when(houseRepository.findById(any())).thenAnswer(onMock -> Optional.of(h));
+
+        assertEquals(h, houseService.read(Long.MAX_VALUE));
+    }
 }
