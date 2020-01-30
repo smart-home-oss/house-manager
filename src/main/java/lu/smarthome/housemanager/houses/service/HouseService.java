@@ -8,6 +8,7 @@ import lu.smarthome.housemanager.houses.repository.HouseRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class HouseService {
         return houseRepository.save(house);
     }
 
-    public House update(Long id, House house){
+    public House update(Long id, @NotNull House house){
 
         House existingHouse = houseRepository
                 .findById(id)

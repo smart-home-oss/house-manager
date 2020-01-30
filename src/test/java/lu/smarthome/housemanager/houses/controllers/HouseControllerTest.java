@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.controllers;
+package lu.smarthome.housemanager.houses.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lu.smarthome.housemanager.houses.domain.House;

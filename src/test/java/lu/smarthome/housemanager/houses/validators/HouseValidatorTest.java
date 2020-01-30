@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.validators;
+package lu.smarthome.housemanager.houses.validators;
 
 import lu.smarthome.housemanager.houses.domain.House;
 import lu.smarthome.housemanager.houses.exception.BadHouseException;

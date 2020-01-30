@@ -1,13 +1,11 @@
-package lu.smarthome.housemanager.validators;
+package lu.smarthome.housemanager.devices;
 
-import lu.smarthome.housemanager.devices.Device;
-import lu.smarthome.housemanager.devices.BadDeviceNameException;
-import lu.smarthome.housemanager.devices.DeviceValidator;
 import lu.smarthome.housemanager.houses.exception.NoRoomAssignedDeviceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DeviceValidatorTest {
 
