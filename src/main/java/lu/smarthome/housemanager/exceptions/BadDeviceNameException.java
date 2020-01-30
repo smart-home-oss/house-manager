@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class NoHouseAssignedRoomException extends RuntimeException {
+public class BadDeviceNameException extends RuntimeException {
 
-    public NoHouseAssignedRoomException(String message) {
+    public BadDeviceNameException(String message) {
         super(message);
     }
 }
