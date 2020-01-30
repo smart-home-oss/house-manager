@@ -219,6 +219,132 @@ paths:
         400:
           description: Bad request, check the response body for details
           content: {}
+  /devices:
+    post:
+      tags:
+        - Devices
+      summary: Create new Device
+      requestBody:
+        description: A Device object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Device'
+        400:
+          description: Bad request, check the response body for details
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Error'
+  /devices/{id}:
+    get:
+      tags:
+        - Devices
+      summary: Get a Device by Id
+      description: Returns a single Device
+      parameters:
+        - name: id
+          in: path
+          description: Id of Device to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/jon:
+              schema:
+                $ref: '#/components/schemas/Device'
+        400:
+          description: No device found with id - 'id'
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - Devices
+      summary: Update a Device by Id
+      description: Returns updated device
+      parameters:
+        - name: id
+          in: path
+          description: Id of Device to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: A device object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Device'
+        400:
+          description: Bad request, check the response body for details
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - Devices
+      summary: Delete a Device by Id
+      description: Return nothing
+      parameters:
+        - name: id
+          in: path
+          description: Id of Device to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        202:
+          description: acknowledged operation but not processed
+          content: {}
+        400:
+          description: Bad request, check the response body for details
+          content: {}
 components:
   schemas:
     House:
@@ -255,3 +381,45 @@ components:
           format: My room
       xml:
         name: Room
+    Device:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        roomId:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: Device Name
+          example: My Device Name
+        Icon:
+          type: string
+          example: link/or/path/to/asset/
+        status:
+          type: integer
+          format: int64
+          example: 1
+      xml:
+        name: Device
+    Error:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: 2020-01-28T19:12:34.536+0000
+        status:
+          type: string
+          example: 404
+        error:
+          type: string
+          example: Some Error
+        message:
+          type: string
+          example: Some error message
+        path:
+          type: string
+          example: /api/v1
