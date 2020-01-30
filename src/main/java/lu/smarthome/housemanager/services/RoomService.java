@@ -23,7 +23,7 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
-    public Room updateById(Long id, Room room) {
+    public Room update(Long id, Room room) {
         Room existingRoom = roomRepository
                 .findById(id)
                 .orElseThrow(() -> new NoRoomFoundException(id));
@@ -39,17 +39,17 @@ public class RoomService {
         return createOrUpdate(room);
     }
 
-    public Room findById(Long roomId) {
+    public Room read(Long roomId) {
         return roomRepository
                 .findById(roomId)
                 .orElseThrow(() -> new NoRoomFoundException(roomId));
     }
 
-    public void deleteById(Long id) {
+    public void delete(Long id) {
         roomRepository.deleteById(id);
     }
 
-    public List<Room> getPage(int page, int size) {
+    public List<Room> readPaged(int page, int size) {
         roomValidator.validatePageParams(page, size);
 
         return roomRepository
@@ -57,7 +57,7 @@ public class RoomService {
                 .getContent();
     }
 
-    public List<Room> getPageByHouseId(long houseId, int page, int size) {
+    public List<Room> readPagedByHouseId(int page, int size, long houseId) {
         roomValidator.validatePageParams(page, size);
 
         return roomRepository

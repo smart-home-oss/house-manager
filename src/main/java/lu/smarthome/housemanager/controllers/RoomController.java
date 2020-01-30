@@ -22,34 +22,30 @@ public class RoomController {
     }
 
     @GetMapping("{id}")
-    public Room findById(@PathVariable Long id) {
-        return roomService.findById(id);
-    }
-
-    @GetMapping("{id}")
-    public Room show(@PathVariable Long id) {
+    public Room read(@PathVariable Long id) {
         return roomService.read(id);
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
-    public List<Room> findByPage(@RequestParam(required = false, defaultValue = "0") int page,
+    public List<Room> readPaged(@RequestParam(required = false, defaultValue = "0") int page,
                                   @RequestParam(required = false, defaultValue = "10") int size,
                                   @RequestParam(required = false) Long houseId) {
 
         if(houseId == null) {
-            return roomService.getPage(page, size);
+            return roomService.readPaged(page, size);
         } else {
-            return roomService.getPageByHouseId(houseId, page, size);
+            return roomService.readPagedByHouseId(page, size, houseId);
         }
     }
 
     @PutMapping("{id}")
-    public Room updateById(@PathVariable Long id, @RequestBody Room room) {
-        return roomService.updateById(id, room);
+    public Room update(@PathVariable Long id, @RequestBody Room room) {
+        return roomService.update(id, room);
     }
 
     @DeleteMapping(value = "{id}")
-    public void deleteById(@PathVariable Long id) {
-        roomService.deleteById(id);
+    public void delete(@PathVariable Long id) {
+        roomService.delete(id);
     }
 }

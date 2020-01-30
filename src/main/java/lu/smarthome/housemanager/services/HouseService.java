@@ -23,7 +23,7 @@ public class HouseService {
         return houseRepository.save(house);
     }
 
-    public House updateHouseById(Long id, House house){
+    public House update(Long id, House house){
 
         House existingHouse = houseRepository
                 .findById(id)
@@ -48,17 +48,17 @@ public class HouseService {
         return createOrUpdate(existingHouse);
     }
 
-    public House getHouseById(Long id) {
+    public House read(Long id) {
         return houseRepository
                 .findById(id)
                 .orElseThrow(() -> new HouseNotFoundException(id));
     }
 
-    public void deleteHouseById(Long id){
+    public void delete(Long id){
         houseRepository.deleteById(id);
     }
 
-    public List<House> getPage(int page, int size) {
+    public List<House> readPaged(int page, int size) {
         return houseRepository
                 .findAll(PageRequest.of(page, size))
                 .getContent();
