@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class HouseNotFoundException extends RuntimeException {
 
-    public HouseNotFoundException(String message) {
-        super(message);
+    public HouseNotFoundException(long id) {
+        super("House not found, id: " + id);
     }
 }
