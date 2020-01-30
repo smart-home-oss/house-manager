@@ -113,3 +113,13 @@ https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/
 jacoco test reports -> sonar 
 https://www.baeldung.com/jacoco
 
+-------------------
+
+spring data - function name dictates how sql is generated
+
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods
+
+properties classes vs configuration classes
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
+

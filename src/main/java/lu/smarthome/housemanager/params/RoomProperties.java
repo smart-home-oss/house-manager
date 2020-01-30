@@ -5,15 +5,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties("app.room")
-public class RoomParams {
+public class RoomProperties {
 
-    private int maxSize = 999;
+    private int pageMaxSize = 999;
 
-    public int getMaxSize() {
-        return maxSize;
+    public int getPageMaxSize() {
+        return pageMaxSize;
     }
 
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
+    public void setPageMaxSize(int maxSize) {
+        this.pageMaxSize = maxSize;
     }
 }

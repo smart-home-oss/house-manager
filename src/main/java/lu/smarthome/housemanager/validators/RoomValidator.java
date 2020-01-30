@@ -5,13 +5,14 @@ import lu.smarthome.housemanager.domain.Room;
 import lu.smarthome.housemanager.exceptions.BadPageException;
 import lu.smarthome.housemanager.exceptions.BadRoomNameException;
 import lu.smarthome.housemanager.exceptions.NoHouseAssignedRoomException;
-import lu.smarthome.housemanager.params.RoomParams;
+import lu.smarthome.housemanager.params.RoomProperties;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class RoomValidator {
-    private final RoomParams roomParams;
+
+    private final RoomProperties roomProperties;
 
     public void validate(Room room) {
         if (room.getName() == null) {
@@ -31,7 +32,7 @@ public class RoomValidator {
             throw new BadPageException("Page size should be equal or bigger than zero, size: " + size);
         }
 
-        if(size > roomParams.getMaxSize()) {
+        if(size > roomProperties.getPageMaxSize()) {
             throw new BadPageException("Page size should be equal or bigger than zero, size: " + size);
         }
     }
