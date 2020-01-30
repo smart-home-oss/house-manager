@@ -26,6 +26,7 @@ public class TechnicalController {
     @RequestMapping(method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     public void options() {
+        //this option method is used by browser
     }
 
 }

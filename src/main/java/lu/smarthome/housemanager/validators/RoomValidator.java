@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class RoomValidator {
-
+  
     private final RoomProperties roomProperties;
 
     public void validate(Room room) {

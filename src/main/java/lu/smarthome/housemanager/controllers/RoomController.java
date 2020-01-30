@@ -26,6 +26,10 @@ public class RoomController {
         return roomService.findById(id);
     }
 
+    @GetMapping("{id}")
+    public Room show(@PathVariable Long id) {
+        return roomService.read(id);
+
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
     public List<Room> findByPage(@RequestParam(required = false, defaultValue = "0") int page,
