@@ -1,8 +1,9 @@
 package lu.smarthome.housemanager.services;
 
-import lu.smarthome.housemanager.domain.House;
-import lu.smarthome.housemanager.repositories.HouseRepository;
-import lu.smarthome.housemanager.validators.HouseValidator;
+import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.service.HouseService;
+import lu.smarthome.housemanager.houses.repository.HouseRepository;
+import lu.smarthome.housemanager.houses.validator.HouseValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

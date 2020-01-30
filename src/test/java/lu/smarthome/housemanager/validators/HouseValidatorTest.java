@@ -1,10 +1,8 @@
 package lu.smarthome.housemanager.validators;
 
-import lu.smarthome.housemanager.domain.House;
-import lu.smarthome.housemanager.domain.Room;
-import lu.smarthome.housemanager.exceptions.BadHouseException;
-import lu.smarthome.housemanager.exceptions.BadHouseIdException;
-import lu.smarthome.housemanager.exceptions.BadRoomNameException;
+import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.exception.BadHouseException;
+import lu.smarthome.housemanager.houses.validator.HouseValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
