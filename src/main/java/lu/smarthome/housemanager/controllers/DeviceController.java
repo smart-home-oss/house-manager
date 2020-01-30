@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("${app.api.version.v1}/devices")
 public class DeviceController {
 
-    private final DeviceService DeviceService;
+    private final DeviceService deviceService;
 
     @PostMapping
     public Device create(@RequestBody Device device) {
-        return DeviceService.create(device);
+        return deviceService.create(device);
     }
 
     @GetMapping("{id}")
     public Device show(@PathVariable Long id) {
-        return DeviceService.read(id);
+        return deviceService.read(id);
     }
 
     @PutMapping("{id}")
     public Device update(@PathVariable Long id, @RequestBody Device device) {
-        return DeviceService.update(id, device);
+        return deviceService.update(id, device);
     }
 
     @DeleteMapping(value = "{id}")
     public void destroy(@PathVariable Long id) {
-        DeviceService.delete(id);
+        deviceService.delete(id);
     }
 }

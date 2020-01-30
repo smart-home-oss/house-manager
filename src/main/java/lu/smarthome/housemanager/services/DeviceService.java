@@ -27,27 +27,23 @@ public class DeviceService {
     public Device update(Long id, Device device) {
         Device existingDevice = deviceRepository.findById(id).orElseThrow(() -> new NoDeviceFoundException("No device found with Id " + id));
 
-        if (existingDevice != null) {
-
-            if (device.getName() != null) {
-                existingDevice.setName(device.getName());
-            }
-
-            if (device.getRoomId() != null) {
-                existingDevice.setRoomId(device.getRoomId());
-            }
-
-            if (device.getIcon() != null) {
-                existingDevice.setIcon(device.getIcon());
-            }
-
-            if (device.getStatus() != null) {
-                existingDevice.setStatus(device.getStatus());
-            }
-            return deviceRepository.save(existingDevice);
+        if (device.getName() != null) {
+            existingDevice.setName(device.getName());
         }
 
-        return deviceRepository.save(device);
+        if (device.getRoomId() != null) {
+            existingDevice.setRoomId(device.getRoomId());
+        }
+
+        if (device.getIcon() != null) {
+            existingDevice.setIcon(device.getIcon());
+        }
+
+        if (device.getStatus() != null) {
+            existingDevice.setStatus(device.getStatus());
+        }
+
+        return deviceRepository.save(existingDevice);
     }
 
     public void delete(Long id) {
