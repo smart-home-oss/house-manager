@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BadRoomNameException extends RuntimeException {
+public class HouseValidationException extends RuntimeException {
 
-    public BadRoomNameException(String message) {
+    public HouseValidationException(String message) {
         super(message);
     }
 }

@@ -4,7 +4,7 @@ import lu.smarthome.housemanager.houses.domain.Room;
 import lu.smarthome.housemanager.houses.exception.BadHouseIdException;
 import lu.smarthome.housemanager.houses.exception.BadPageException;
 import lu.smarthome.housemanager.houses.exception.BadPageSizeException;
-import lu.smarthome.housemanager.houses.exception.BadRoomNameException;
+import lu.smarthome.housemanager.houses.exception.RoomValidationException;
 import lu.smarthome.housemanager.houses.RoomProperties;
 import lu.smarthome.housemanager.houses.validator.RoomValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ class RoomValidatorTest {
     void validateExceptions() {
         Room room = new Room();
 
-        assertThrows(BadRoomNameException.class, () -> validator.validate(room));
+        assertThrows(RoomValidationException.class, () -> validator.validate(room));
 
         room.setName("name");
         assertThrows(BadHouseIdException.class, () -> validator.validate(room));

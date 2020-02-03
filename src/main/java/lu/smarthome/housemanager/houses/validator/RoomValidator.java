@@ -5,7 +5,7 @@ import lu.smarthome.housemanager.houses.RoomProperties;
 import lu.smarthome.housemanager.houses.domain.Room;
 import lu.smarthome.housemanager.houses.exception.BadPageException;
 import lu.smarthome.housemanager.houses.exception.BadPageSizeException;
-import lu.smarthome.housemanager.houses.exception.BadRoomNameException;
+import lu.smarthome.housemanager.houses.exception.RoomValidationException;
 import lu.smarthome.housemanager.houses.exception.BadHouseIdException;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +17,11 @@ public class RoomValidator {
 
     public void validate(Room room) {
         if (room.getName() == null) {
-            throw new BadRoomNameException("Name of the room should be a non-empty string");
+            throw new RoomValidationException("Name of the room should be a non-empty string");
         }
 
-        if (room.getHouseId() == null || room.getHouseId() < 0) {
-            throw new BadHouseIdException("The house should have a value bigger than ZERO, house id: " + room.getHouseId());
+        if (room.getHouseId() == null || room.getHouseId() < 1) {
+            throw new RoomValidationException("The house id should have a value bigger than ZERO");
         }
     }
 
