@@ -1,8 +1,8 @@
 package lu.smarthome.housemanager.houses.controller;
 
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.service.HouseService;
 import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.service.HouseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

@@ -6,6 +6,7 @@ import lu.smarthome.housemanager.houses.domain.House;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
 import lu.smarthome.housemanager.houses.repository.HouseRepository;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
@@ -49,6 +50,8 @@ public class HouseService {
         return createOrUpdate(existingHouse);
     }
 
+    // @PreAuthorize("hasRole('ROLE_ADMIN')") // won't work
+    @PreAuthorize("hasRole('ROLE_USER')")
     public House read(Long id) {
         return houseRepository
                 .findById(id)

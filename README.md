@@ -123,3 +123,25 @@ properties classes vs configuration classes
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
 
+--------------------
+
+Throwable vs Error vs Exception vs RuntimeException
+
+ClassLoader 
+
+Servlet Container (java web server) vs Application Server
+
+https://landing.google.com/sre/
+
+micrometter, prometheus, graphana
+
+
+---------------------
+
+Security
+
+https://spring.io/guides/gs/securing-web/
+https://www.baeldung.com/spring-security-basic-authentication
+https://www.baeldung.com/spring-security-method-security
+
+the java code is protected by spring security via anotations
