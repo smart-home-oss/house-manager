@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @CrossOrigin("${app.api.cors}")
-public class TechnicalController {
+public class RootController {
 
     @Value("${app.api.version.default}")
     private String defaultApiSpecUri;
