@@ -4,8 +4,7 @@ services:
   user:
     image: smart-home-oss/house-manager:latest
     container_name: house-manager-um-shoss
-    build:
-      dockerfile: Dockerfile
+    build: ./
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.house.rule=Host(`house.localhost`)"
