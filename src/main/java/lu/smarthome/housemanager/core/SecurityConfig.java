@@ -21,6 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         if(properties.isUseJwtAuth()) {
             http
                     .authorizeRequests()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/favicon.ico").permitAll()
+                    .antMatchers("/api").permitAll()
+                    .antMatchers("/api/v1.yml").permitAll()
+                    .antMatchers("/webjars/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .oauth2ResourceServer().jwt();
