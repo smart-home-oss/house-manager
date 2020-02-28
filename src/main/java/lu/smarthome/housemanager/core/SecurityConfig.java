@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             log.error(FULL_LINE);
 
             http
+                    .csrf().disable()
                     .authorizeRequests()
                     .anyRequest().permitAll()
             .and()
