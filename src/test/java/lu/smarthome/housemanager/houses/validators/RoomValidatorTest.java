@@ -43,10 +43,10 @@ class RoomValidatorTest {
         assertThrows(RoomValidationException.class, () -> validator.validate(room));
 
         room.setName("name");
-        assertThrows(BadHouseIdException.class, () -> validator.validate(room));
+        assertThrows(RoomValidationException.class, () -> validator.validate(room));
 
         room.setHouseId(Long.MIN_VALUE);
-        assertThrows(BadHouseIdException.class, () -> validator.validate(room));
+        assertThrows(RoomValidationException.class, () -> validator.validate(room));
 
     }
 
