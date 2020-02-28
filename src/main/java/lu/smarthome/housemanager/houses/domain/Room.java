@@ -3,12 +3,10 @@ package lu.smarthome.housemanager.houses.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "house", schema = "smarthome_housemanager")
 @Getter
 @Setter
 public class Room {
