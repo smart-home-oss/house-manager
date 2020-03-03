@@ -18,7 +18,9 @@ public class DeviceService {
     }
 
     public Device read(Long deviceId) throws NoDeviceFoundException {
-        return deviceRepository.findById(deviceId).orElseThrow(() -> new NoDeviceFoundException("No device found with Id " + deviceId));
+        return deviceRepository
+                .findById(deviceId)
+                .orElseThrow(() -> new NoDeviceFoundException("No device found with Id " + deviceId));
     }
 
     public Device update(Long id, Device device) {
