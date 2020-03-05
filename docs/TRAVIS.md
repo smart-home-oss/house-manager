@@ -3,7 +3,7 @@ Integrate travis with sonarcloud:
 - [CI/CD springboot applications using travis](https://sivalabs.in/2018/01/ci-cd-springboot-applications-using-travis-ci/)
 - [Getting started with spring boot travis and heroku](https://medium.com/@felippepuhle/getting-started-with-spring-boot-travis-and-heroku-4562a723fd0e)
 
-`travis encrypt SONAR_KEY_SECURE="222...9999" --pro`
+`travis encrypt SONAR_KEY_SECURE="222...9999" --pro --add`
 
 Then we can use `SONAR_KEY_SECURE` as variable in our config:
 ```bash
