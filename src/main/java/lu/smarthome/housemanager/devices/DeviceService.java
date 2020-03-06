@@ -14,6 +14,7 @@ public class DeviceService {
     public Device create(Device device) {
         deviceValidator.validate(device);
 
+        //aici trebuie un dto
         return deviceRepository.save(device);
     }
 
