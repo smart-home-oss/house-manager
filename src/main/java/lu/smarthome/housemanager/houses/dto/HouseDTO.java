@@ -1,20 +1,17 @@
-package lu.smarthome.housemanager.houses.domain;
+package lu.smarthome.housemanager.houses.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "house", schema = "smarthome_housemanager")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class House {
+public class HouseDTO {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String street;

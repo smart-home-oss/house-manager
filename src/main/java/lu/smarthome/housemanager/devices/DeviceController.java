@@ -8,21 +8,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("${app.api.version.v1}/devices")
 public class DeviceController {
 
+    private final DeviceMapper mapper;
     private final DeviceService deviceService;
 
     @PostMapping
-    public Device create(@RequestBody Device device) {
-        return deviceService.create(device);
+    public DeviceDTO create(@RequestBody DeviceDTO dto) {
+        final Device result = deviceService.create(mapper.toDevice(dto));
+        return mapper.toDTO(result);
     }
 
     @GetMapping("{id}")
-    public Device read(@PathVariable Long id) {
-        return deviceService.read(id);
+    public DeviceDTO read(@PathVariable Long id) {
+        final Device result = deviceService.read(id);
+        return mapper.toDTO(result);
     }
 
     @PutMapping("{id}")
-    public Device update(@PathVariable Long id, @RequestBody Device device) {
-        return deviceService.update(id, device);
+    public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) {
+        final Device result = deviceService.update(id, mapper.toDevice(dto));
+        return mapper.toDTO(result);
     }
 
     @DeleteMapping(value = "{id}")
