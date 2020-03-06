@@ -12,8 +12,8 @@ public class DeviceController {
     private final DeviceService deviceService;
 
     @PostMapping
-    public DeviceDTO create(@RequestBody DeviceDTO deviceDTO) {
-        Device result = deviceService.create(mapper.toDevice(deviceDTO));
+    public DeviceDTO create(@RequestBody DeviceDTO dto) {
+        Device result = deviceService.create(mapper.toDevice(dto));
 
         return mapper.toDTO(result);
     }
@@ -26,10 +26,10 @@ public class DeviceController {
     }
 
     @PutMapping("{id}")
-    public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO) {
+    public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) {
 
         return mapper.toDTO(
-                deviceService.update(id, mapper.toDevice(deviceDTO))
+                deviceService.update(id, mapper.toDevice(dto))
         );
     }
 
