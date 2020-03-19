@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  user:
+  house-manager:
     image: smart-home-oss/house-manager:latest
     container_name: house-manager-um-shoss
     build: ./
@@ -11,6 +11,8 @@ services:
       - "traefik.http.routers.house.entrypoints=web"
     ports:
     - 7000:7000
+    networks:
+      - smarthomeoss
 
 networks:
   smarthomeoss:
