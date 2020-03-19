@@ -2,7 +2,9 @@ package lu.smarthome.housemanager.core;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -22,6 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http
                     .authorizeRequests()
                     .antMatchers("/").permitAll()
+                    .antMatchers("/actuator/info").permitAll()
+                    .antMatchers("/actuator/health").permitAll()
                     .antMatchers("/favicon.ico").permitAll()
                     .antMatchers("/api").permitAll()
                     .antMatchers("/api/v1.yml").permitAll()
@@ -46,6 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                     .oauth2ResourceServer().jwt();
         }
+    }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
     }
 }

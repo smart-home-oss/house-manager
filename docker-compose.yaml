@@ -3,7 +3,7 @@ version: '3'
 services:
   house-manager:
     image: smart-home-oss/house-manager:latest
-    container_name: house-manager-um-shoss
+    container_name: house-manager-shoss
     build: ./
     labels:
       - "traefik.enable=true"
