@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static lu.smarthome.housemanager.devices.Device.Status.NEW;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -27,7 +28,7 @@ public class DeviceServiceTest {
         Device device = new Device();
         device.setName("name");
         device.setIcon("some Icon");
-        device.setStatus(Long.MAX_VALUE);
+        device.setStatus(NEW);
         device.setHousePieceId(Long.MAX_VALUE);
 
         assertDoesNotThrow(() -> service.create(device));

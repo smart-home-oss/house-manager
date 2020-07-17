@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.HouseMapper;
 import lu.smarthome.housemanager.houses.dto.RoomDTO;
 import lu.smarthome.housemanager.houses.entity.HousePiece;
-import lu.smarthome.housemanager.houses.service.RoomService;
+import lu.smarthome.housemanager.houses.service.HousePieceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,40 +14,45 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${app.api.version.v1}/rooms")
+@RequestMapping("${app.api.version.v1}/house-piece")
 @CrossOrigin("${app.api.cors}")
-public class RoomController {
+public class HousePieceController {
 
-    private final RoomService roomService;
-    private final HouseMapper mapper;
+    private final HousePieceService housePieceService;
+    private final HouseMapper       mapper;
 
     @PostMapping
     @ResponseStatus(CREATED)
     public RoomDTO create(@RequestBody RoomDTO dto) {
         return mapper.toDTO(
-                roomService.create(mapper.toRoom(dto))
+                housePieceService.create(mapper.toRoom(dto))
         );
+    }
+
+    @GetMapping("types")
+    public HousePiece.Type[] read() {
+        return HousePiece.Type.values();
     }
 
     @GetMapping("{id}")
     public RoomDTO read(@PathVariable Long id) {
         return mapper.toDTO(
-                roomService.read(id)
+                housePieceService.read(id)
         );
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
     public List<RoomDTO> readPaged(@RequestParam(required = false, defaultValue = "0") int page,
-                                  @RequestParam(required = false, defaultValue = "10") int size,
-                                  @RequestParam(required = false) Long houseId) { // TODO, see if Optional can be used
+                                   @RequestParam(required = false, defaultValue = "10") int size,
+                                   @RequestParam(required = false) Long houseId) { // TODO, see if Optional can be used
 
         final List<HousePiece> result;
 
-        if(houseId == null) {
-            result = roomService.readPaged(page, size);
+        if (houseId == null) {
+            result = housePieceService.readPaged(page, size);
         } else {
-            result = roomService.readPagedByHouseId(page, size, houseId);
+            result = housePieceService.readPagedByHouseId(page, size, houseId);
         }
 
         return mapper.toRoomDTO(result);
@@ -56,12 +61,12 @@ public class RoomController {
     @PutMapping("{id}")
     public RoomDTO update(@PathVariable Long id, @RequestBody RoomDTO dto) {
         return mapper.toDTO(
-                roomService.update(id, mapper.toRoom(dto))
+                housePieceService.update(id, mapper.toRoom(dto))
         );
     }
 
     @DeleteMapping(value = "{id}")
     public void delete(@PathVariable Long id) {
-        roomService.delete(id);
+        housePieceService.delete(id);
     }
 }

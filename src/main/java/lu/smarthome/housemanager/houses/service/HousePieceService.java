@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class RoomService {
+public class HousePieceService {
 
     private final RoomRepository repository;
     private final PageValidator  pageValidator;

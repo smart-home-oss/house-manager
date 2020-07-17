@@ -11,11 +11,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)"/>
-            <column name="post_code" type="varchar(10)"/>
-            <column name="street" type="varchar(255)"/>
-            <column name="number" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="address_id" type="bigint"/>
         </createTable>
     </changeSet>
 

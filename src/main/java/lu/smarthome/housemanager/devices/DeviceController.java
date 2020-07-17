@@ -28,6 +28,11 @@ public class DeviceController {
         );
     }
 
+    @GetMapping("statuses")
+    public Device.Status[] read() {
+        return Device.Status.values();
+    }
+
     @PutMapping("{id}")
     public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) {
         return mapper.toDTO(

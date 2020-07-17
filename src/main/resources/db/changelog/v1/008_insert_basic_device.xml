@@ -7,7 +7,7 @@
 
     <changeSet id="1" author="rodi">
         <insert tableName="device" schemaName="smarthome_housemanager">
-            <column name="room_id" valueNumeric="1" />
+            <column name="house_piece_id" valueNumeric="1" />
             <column name="name" value="Living housePiece" />
         </insert>
     </changeSet>
