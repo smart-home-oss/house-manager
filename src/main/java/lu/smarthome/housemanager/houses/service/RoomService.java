@@ -1,10 +1,10 @@
 package lu.smarthome.housemanager.houses.service;
 
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.validator.RoomValidator;
-import lu.smarthome.housemanager.houses.domain.Room;
+import lu.smarthome.housemanager.houses.entity.HousePiece;
 import lu.smarthome.housemanager.houses.exception.NoRoomFoundException;
 import lu.smarthome.housemanager.houses.repository.RoomRepository;
+import lu.smarthome.housemanager.houses.validator.PageValidator;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -14,53 +14,46 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoomService {
 
-    private final RoomRepository roomRepository;
-    private final RoomValidator roomValidator;
+    private final RoomRepository repository;
+    private final PageValidator  pageValidator;
 
-    public Room createOrUpdate(Room room) {
-        roomValidator.validate(room);
-
-        return roomRepository.save(room);
+    public HousePiece create(HousePiece r) {
+        return repository.save(
+                r.validToCreate()
+        );
     }
 
-    public Room update(Long id, Room room) {
-        Room existingRoom = roomRepository
-                .findById(id)
-                .orElseThrow(() -> new NoRoomFoundException(id));
-
-        if (room.getName() != null) {
-            existingRoom.setName(room.getName());
-        }
-
-        if (room.getHouseId() != null) {
-            existingRoom.setHouseId(room.getHouseId());
-        }
-
-        return createOrUpdate(room);
+    public HousePiece update(Long id, HousePiece housePiece) {
+        return repository.save(
+                repository
+                        .findById(id)
+                        .orElseThrow(() -> new NoRoomFoundException(id))
+                        .update(housePiece)
+        );
     }
 
-    public Room read(Long roomId) {
-        return roomRepository
+    public HousePiece read(Long roomId) {
+        return repository
                 .findById(roomId)
                 .orElseThrow(() -> new NoRoomFoundException(roomId));
     }
 
     public void delete(Long id) {
-        roomRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
-    public List<Room> readPaged(int page, int size) {
-        roomValidator.validatePageParams(page, size);
+    public List<HousePiece> readPaged(int page, int size) {
+        pageValidator.validateForRead(page, size);
 
-        return roomRepository
+        return repository
                 .findAll(PageRequest.of(page, size))
                 .getContent();
     }
 
-    public List<Room> readPagedByHouseId(int page, int size, long houseId) {
-        roomValidator.validatePageParams(page, size);
+    public List<HousePiece> readPagedByHouseId(int page, int size, long houseId) {
+        pageValidator.validateForRead(page, size);
 
-        return roomRepository
+        return repository
                 .findAllByHouseId(houseId, PageRequest.of(page, size))
                 .getContent();
     }

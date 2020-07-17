@@ -1,6 +1,6 @@
 package lu.smarthome.housemanager.houses.repository;
 
-import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.entity.House;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

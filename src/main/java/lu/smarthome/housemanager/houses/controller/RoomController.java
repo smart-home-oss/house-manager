@@ -3,12 +3,14 @@ package lu.smarthome.housemanager.houses.controller;
 import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.HouseMapper;
 import lu.smarthome.housemanager.houses.dto.RoomDTO;
+import lu.smarthome.housemanager.houses.entity.HousePiece;
 import lu.smarthome.housemanager.houses.service.RoomService;
-import lu.smarthome.housemanager.houses.domain.Room;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,24 +22,27 @@ public class RoomController {
     private final HouseMapper mapper;
 
     @PostMapping
+    @ResponseStatus(CREATED)
     public RoomDTO create(@RequestBody RoomDTO dto) {
-        final Room result = roomService.createOrUpdate(mapper.toRoom(dto));
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                roomService.create(mapper.toRoom(dto))
+        );
     }
 
     @GetMapping("{id}")
     public RoomDTO read(@PathVariable Long id) {
-        final Room result = roomService.read(id);
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                roomService.read(id)
+        );
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
     public List<RoomDTO> readPaged(@RequestParam(required = false, defaultValue = "0") int page,
                                   @RequestParam(required = false, defaultValue = "10") int size,
-                                  @RequestParam(required = false) Long houseId) {
+                                  @RequestParam(required = false) Long houseId) { // TODO, see if Optional can be used
 
-        final List<Room> result;
+        final List<HousePiece> result;
 
         if(houseId == null) {
             result = roomService.readPaged(page, size);
@@ -50,8 +55,9 @@ public class RoomController {
 
     @PutMapping("{id}")
     public RoomDTO update(@PathVariable Long id, @RequestBody RoomDTO dto) {
-        final Room result = roomService.update(id, mapper.toRoom(dto));
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                roomService.update(id, mapper.toRoom(dto))
+        );
     }
 
     @DeleteMapping(value = "{id}")

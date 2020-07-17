@@ -5,30 +5,32 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
+    <changeSet id="0" author="rodi">
+        <insert tableName="house" schemaName="smarthome_housemanager">
+            <column name="name" value="My Home" />
+            <column name="address_id" value="1" />
+        </insert>
+
+    </changeSet>
+
     <changeSet id="1" author="rodi">
         <insert tableName="house" schemaName="smarthome_housemanager">
             <column name="name" value="Ice cream home" />
-            <column name="post_code" value="M-6969" />
-            <column name="street" value="Boulevard of dreams" />
-            <column name="number" value="145/2 A" />
+            <column name="address_id" value="1" />
         </insert>
     </changeSet>
 
     <changeSet id="2" author="rodi">
         <insert tableName="house" schemaName="smarthome_housemanager">
             <column name="name" value="Vanilla building" />
-            <column name="post_code" value="M-6969" />
-            <column name="street" value="Boulevard of dreams" />
-            <column name="number" value="145/2 A" />
+            <column name="address_id" value="2" />
         </insert>
     </changeSet>
 
     <changeSet id="3" author="rodi">
         <insert tableName="house" schemaName="smarthome_housemanager">
             <column name="name" value="House of the Unicorns" />
-            <column name="post_code" value="77-H-21" />
-            <column name="street" value="Rainbow street" />
-            <column name="number" value="1" />
+            <column name="address_id" value="2" />
         </insert>
     </changeSet>
 

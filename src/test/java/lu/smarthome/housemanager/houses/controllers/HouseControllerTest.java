@@ -1,7 +1,7 @@
 package lu.smarthome.housemanager.houses.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.entity.House;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

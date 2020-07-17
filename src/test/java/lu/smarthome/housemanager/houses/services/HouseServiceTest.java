@@ -1,10 +1,9 @@
 package lu.smarthome.housemanager.houses.services;
 
-import lu.smarthome.housemanager.houses.domain.House;
+import lu.smarthome.housemanager.houses.entity.House;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
 import lu.smarthome.housemanager.houses.service.HouseService;
 import lu.smarthome.housemanager.houses.repository.HouseRepository;
-import lu.smarthome.housemanager.houses.validator.HouseValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,15 +17,13 @@ import static org.mockito.Mockito.when;
 class HouseServiceTest {
 
     private HouseService houseService;
-    private HouseValidator houseValidator;
     private HouseRepository houseRepository;
 
     @BeforeEach
     void setUp() {
-        houseValidator = Mockito.mock(HouseValidator.class);
         houseRepository = Mockito.mock(HouseRepository.class);
 
-        houseService = new HouseService(houseValidator, houseRepository);
+        houseService = new HouseService(houseRepository);
     }
 
     @Test
@@ -34,9 +31,7 @@ class HouseServiceTest {
         House newHouse = House
                 .builder()
                 .name("name")
-                .number("number")
-                .postCode("postcode")
-                .street("street")
+                .addressId(Long.MAX_VALUE)
                 .build();
 
         House oldHouse = new House();
@@ -48,9 +43,7 @@ class HouseServiceTest {
 
         assertNotNull(result);
         assertEquals(newHouse.getName(), result.getName());
-        assertEquals(newHouse.getNumber(), result.getNumber());
-        assertEquals(newHouse.getPostCode(), result.getPostCode());
-        assertEquals(newHouse.getStreet(), result.getStreet());
+        assertEquals(newHouse.getAddressId(), result.getAddressId());
     }
 
     @Test

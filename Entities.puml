@@ -1,0 +1,41 @@
+@startuml
+class Address {
+    Long id
+    String street
+    String number
+    String postCode
+}
+
+class HousePiece {
+    Long id
+    Long houseId
+    String name
+    HousePiece.Type type = ROOM
+}
+
+enum HousePiece.Type {
+    ROOM, YARD, DRIVE_WAY,
+    LIVING_ROOM, BATH_ROOM,
+    WC, BED_ROOM, CLOSET, HALL
+}
+
+class House {
+   Long id
+   String name
+   Long addressId
+}
+
+class Device {
+    Long   id
+    Long   housePieceId
+    String name
+    String icon
+    Long   status
+}
+
+House -up- Address
+HousePiece -up- House
+HousePiece -right- HousePiece.Type
+Device -up- HousePiece
+
+@enduml

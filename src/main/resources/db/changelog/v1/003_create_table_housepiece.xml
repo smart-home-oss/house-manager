@@ -6,18 +6,15 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="1" author="rodi">
-        <createTable tableName="device" schemaName="smarthome_housemanager">
+        <createTable tableName="house_piece" schemaName="smarthome_housemanager">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="room_id" type="bigint">
+            <column name="house_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(255)"/>
-            <column name="icon" type="varchar(255)"/>
-            <column name="status" type="bigint" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
+            <column name="type" type="varchar(255)"/>
         </createTable>
     </changeSet>
 

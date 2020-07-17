@@ -9,41 +9,26 @@ import org.springframework.stereotype.Service;
 public class DeviceService {
 
     private final DeviceRepository deviceRepository;
-    private final DeviceValidator deviceValidator;
 
     public Device create(Device device) {
-        deviceValidator.validate(device);
-
-        //aici trebuie un dto
-        return deviceRepository.save(device);
+        return deviceRepository.save(
+                device.validToCreate()
+        );
     }
 
-    public Device read(Long deviceId) throws NoDeviceFoundException {
+    public Device read(Long id) {
         return deviceRepository
-                .findById(deviceId)
-                .orElseThrow(() -> new NoDeviceFoundException("No device found with Id " + deviceId));
+                .findById(id)
+                .orElseThrow(() -> new NoDeviceFoundException(id));
     }
 
-    public Device update(Long id, Device device) {
-        Device existingDevice = deviceRepository.findById(id).orElseThrow(() -> new NoDeviceFoundException("No device found with Id " + id));
-
-        if (device.getName() != null) {
-            existingDevice.setName(device.getName());
-        }
-
-        if (device.getRoomId() != null) {
-            existingDevice.setRoomId(device.getRoomId());
-        }
-
-        if (device.getIcon() != null) {
-            existingDevice.setIcon(device.getIcon());
-        }
-
-        if (device.getStatus() != null) {
-            existingDevice.setStatus(device.getStatus());
-        }
-
-        return deviceRepository.save(existingDevice);
+    public Device update(Long id, Device d) {
+        return deviceRepository.save(
+                deviceRepository
+                        .findById(id)
+                        .orElseThrow(() -> new NoDeviceFoundException(id))
+                        .update(d)
+        );
     }
 
     public void delete(Long id) {

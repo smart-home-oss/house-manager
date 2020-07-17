@@ -6,13 +6,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="1" author="rodi">
-        <insert tableName="house" schemaName="smarthome_housemanager">
-            <column name="name" value="My Home" />
-            <column name="post_code" value="L-1234" />
-            <column name="street" value="Skypark Avenue" />
-            <column name="number" value="12 F" />
+        <insert tableName="device" schemaName="smarthome_housemanager">
+            <column name="room_id" valueNumeric="1" />
+            <column name="name" value="Living housePiece" />
         </insert>
-
     </changeSet>
 
 </databaseChangeLog>

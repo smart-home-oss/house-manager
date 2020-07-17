@@ -3,6 +3,8 @@ package lu.smarthome.housemanager.devices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${app.api.version.v1}/devices")
@@ -12,21 +14,25 @@ public class DeviceController {
     private final DeviceService deviceService;
 
     @PostMapping
+    @ResponseStatus(CREATED)
     public DeviceDTO create(@RequestBody DeviceDTO dto) {
-        final Device result = deviceService.create(mapper.toDevice(dto));
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                deviceService.create(mapper.toDevice(dto))
+        );
     }
 
     @GetMapping("{id}")
     public DeviceDTO read(@PathVariable Long id) {
-        final Device result = deviceService.read(id);
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                deviceService.read(id)
+        );
     }
 
     @PutMapping("{id}")
     public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) {
-        final Device result = deviceService.update(id, mapper.toDevice(dto));
-        return mapper.toDTO(result);
+        return mapper.toDTO(
+                deviceService.update(id, mapper.toDevice(dto))
+        );
     }
 
     @DeleteMapping(value = "{id}")

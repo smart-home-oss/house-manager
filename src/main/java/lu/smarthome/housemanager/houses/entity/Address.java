@@ -1,23 +1,25 @@
-package lu.smarthome.housemanager.houses.domain;
+package lu.smarthome.housemanager.houses.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "house", schema = "smarthome_housemanager")
+@Table(name = "address", schema = "smarthome_housemanager")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class House {
+public class Address {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private String name;
+
     private String street;
     private String number;
     private String postCode;
+
+
 }

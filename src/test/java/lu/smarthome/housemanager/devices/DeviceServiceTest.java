@@ -18,11 +18,8 @@ public class DeviceServiceTest {
 
     @BeforeEach
     void setUp() {
-
         deviceRepository = mock(DeviceRepository.class);
-        DeviceValidator deviceValidator = mock(DeviceValidator.class);
-
-        service = new DeviceService(deviceRepository, deviceValidator);
+        service = new DeviceService(deviceRepository);
     }
 
     @Test
@@ -31,7 +28,7 @@ public class DeviceServiceTest {
         device.setName("name");
         device.setIcon("some Icon");
         device.setStatus(Long.MAX_VALUE);
-        device.setRoomId(Long.MAX_VALUE);
+        device.setHousePieceId(Long.MAX_VALUE);
 
         assertDoesNotThrow(() -> service.create(device));
     }
