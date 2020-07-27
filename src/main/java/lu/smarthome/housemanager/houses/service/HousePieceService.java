@@ -1,8 +1,9 @@
 package lu.smarthome.housemanager.houses.service;
 
+import io.vavr.control.Option;
+import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.entity.HousePiece;
-import lu.smarthome.housemanager.houses.exception.NoRoomFoundException;
 import lu.smarthome.housemanager.houses.repository.RoomRepository;
 import lu.smarthome.housemanager.houses.validator.PageValidator;
 import org.springframework.data.domain.PageRequest;
@@ -17,25 +18,22 @@ public class HousePieceService {
     private final RoomRepository repository;
     private final PageValidator  pageValidator;
 
-    public HousePiece create(HousePiece r) {
-        return repository.save(
-                r.validToCreate()
-        );
+    public Try<HousePiece> create(HousePiece r) {
+        return Try
+                .of(r::validBeforeCreation)
+                .andThen(repository::save);
     }
 
-    public HousePiece update(Long id, HousePiece housePiece) {
-        return repository.save(
-                repository
-                        .findById(id)
-                        .orElseThrow(() -> new NoRoomFoundException(id))
-                        .update(housePiece)
-        );
-    }
-
-    public HousePiece read(Long roomId) {
+    public Option<HousePiece> update(Long id, HousePiece housePiece) {
         return repository
-                .findById(roomId)
-                .orElseThrow(() -> new NoRoomFoundException(roomId));
+                .vFindById(id)
+                .map(h -> h.update(housePiece))
+                .map(repository::vSave)
+                .get();
+    }
+
+    public Option<HousePiece> read(Long roomId) {
+        return repository.vFindById(roomId);
     }
 
     public void delete(Long id) {
@@ -50,11 +48,12 @@ public class HousePieceService {
                 .getContent();
     }
 
-    public List<HousePiece> readPagedByHouseId(int page, int size, long houseId) {
-        pageValidator.validateForRead(page, size);
+    public List<HousePiece> readPagedByHouseId(int pageNr, int size, long houseId) {
+        pageValidator.validateForRead(pageNr, size);
+        var page = PageRequest.of(pageNr, size);
 
         return repository
-                .findAllByHouseId(houseId, PageRequest.of(page, size))
+                .findAllByHouseId(houseId, page)
                 .getContent();
     }
 }

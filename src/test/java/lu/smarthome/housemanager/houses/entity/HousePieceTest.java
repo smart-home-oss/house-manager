@@ -13,20 +13,20 @@ class HousePieceTest {
         housePiece.setHouseId(Long.MAX_VALUE);
         housePiece.setName("name");
 
-        assertDoesNotThrow(housePiece::validToCreate);
+        assertDoesNotThrow(housePiece::validBeforeCreation);
     }
 
     @Test
     void validateExceptions() {
         HousePiece housePiece = new HousePiece();
 
-        assertThrows(RoomValidationException.class, housePiece::validToCreate);
+        assertThrows(RoomValidationException.class, housePiece::validBeforeCreation);
 
         housePiece.setName("name");
-        assertThrows(RoomValidationException.class, housePiece::validToCreate);
+        assertThrows(RoomValidationException.class, housePiece::validBeforeCreation);
 
         housePiece.setHouseId(Long.MIN_VALUE);
-        assertThrows(RoomValidationException.class, housePiece::validToCreate);
+        assertThrows(RoomValidationException.class, housePiece::validBeforeCreation);
 
     }
 

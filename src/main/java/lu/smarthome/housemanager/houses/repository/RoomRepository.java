@@ -1,6 +1,6 @@
 package lu.smarthome.housemanager.houses.repository;
 
-
+import io.vavr.control.Option;
 import lu.smarthome.housemanager.houses.entity.HousePiece;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,4 +12,6 @@ public interface RoomRepository extends PagingAndSortingRepository<HousePiece, L
 
     Page<HousePiece> findAllByHouseId(long houseId, Pageable pageable);
 
+    Option<HousePiece> vFindById(Long aLong);
+    Option<HousePiece> vSave(HousePiece entity);
 }

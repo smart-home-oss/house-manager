@@ -18,15 +18,16 @@ import static org.springframework.http.HttpStatus.CREATED;
 @CrossOrigin("${app.api.cors}")
 public class HousePieceController {
 
-    private final HousePieceService housePieceService;
+    private final HousePieceService service;
     private final HouseMapper       mapper;
 
     @PostMapping
     @ResponseStatus(CREATED)
     public RoomDTO create(@RequestBody RoomDTO dto) {
-        return mapper.toDTO(
-                housePieceService.create(mapper.toRoom(dto))
-        );
+        return service
+                .create(mapper.toRoom(dto))
+                .map(mapper::toDTO)
+                .get();
     }
 
     @GetMapping("types")
@@ -36,9 +37,10 @@ public class HousePieceController {
 
     @GetMapping("{id}")
     public RoomDTO read(@PathVariable Long id) {
-        return mapper.toDTO(
-                housePieceService.read(id)
-        );
+        return service
+                .read(id)
+                .map(mapper::toDTO)
+                .get();
     }
 
     @GetMapping
@@ -50,9 +52,9 @@ public class HousePieceController {
         final List<HousePiece> result;
 
         if (houseId == null) {
-            result = housePieceService.readPaged(page, size);
+            result = service.readPaged(page, size);
         } else {
-            result = housePieceService.readPagedByHouseId(page, size, houseId);
+            result = service.readPagedByHouseId(page, size, houseId);
         }
 
         return mapper.toRoomDTO(result);
@@ -60,13 +62,14 @@ public class HousePieceController {
 
     @PutMapping("{id}")
     public RoomDTO update(@PathVariable Long id, @RequestBody RoomDTO dto) {
-        return mapper.toDTO(
-                housePieceService.update(id, mapper.toRoom(dto))
-        );
+        return service
+                .update(id, mapper.toRoom(dto))
+                .map(mapper::toDTO)
+                .get();
     }
 
     @DeleteMapping(value = "{id}")
     public void delete(@PathVariable Long id) {
-        housePieceService.delete(id);
+        service.delete(id);
     }
 }

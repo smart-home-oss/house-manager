@@ -41,7 +41,7 @@ public class HousePiece {
         return this;
     }
 
-    public HousePiece validToCreate() {
+    public HousePiece validBeforeCreation() {
         if (name == null) {
             throw new RoomValidationException("Name of the room should be a non-empty string");
         }
