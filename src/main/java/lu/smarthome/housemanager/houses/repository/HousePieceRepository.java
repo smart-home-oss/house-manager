@@ -8,10 +8,14 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoomRepository extends PagingAndSortingRepository<HousePiece, Long> {
+public interface HousePieceRepository extends PagingAndSortingRepository<HousePiece, Long> {
 
     Page<HousePiece> findAllByHouseId(long houseId, Pageable pageable);
 
-    Option<HousePiece> vFindById(Long aLong);
-    Option<HousePiece> vSave(HousePiece entity);
+    default Option<HousePiece> vFindById(Long aLong) {
+        return Option.ofOptional(findById(aLong));
+    }
+    default Option<HousePiece> vSave(HousePiece entity) {
+        return Option.of(save(entity));
+    };
 }

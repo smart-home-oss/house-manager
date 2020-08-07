@@ -4,7 +4,7 @@ import io.vavr.control.Option;
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.entity.HousePiece;
-import lu.smarthome.housemanager.houses.repository.RoomRepository;
+import lu.smarthome.housemanager.houses.repository.HousePieceRepository;
 import lu.smarthome.housemanager.houses.validator.PageValidator;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HousePieceService {
 
-    private final RoomRepository repository;
-    private final PageValidator  pageValidator;
+    private final HousePieceRepository repository;
+    private final PageValidator        pageValidator;
 
     public Try<HousePiece> create(HousePiece r) {
         return Try
