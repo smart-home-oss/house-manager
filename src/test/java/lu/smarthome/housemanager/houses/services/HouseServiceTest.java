@@ -39,7 +39,7 @@ class HouseServiceTest {
         when(houseRepository.findById(any())).thenAnswer(onMock -> Optional.of(oldHouse));
         when(houseRepository.save(any())).thenAnswer(onMock -> oldHouse);
 
-        final House result = houseService.update(Long.MAX_VALUE, newHouse);
+        final House result = houseService.update(Long.MAX_VALUE, newHouse).get();
 
         assertNotNull(result);
         assertEquals(newHouse.getName(), result.getName());

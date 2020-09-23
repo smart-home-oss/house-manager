@@ -1,5 +1,6 @@
 package lu.smarthome.housemanager.houses.controller;
 
+import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.HouseMapper;
 import lu.smarthome.housemanager.houses.dto.HouseDTO;
@@ -23,38 +24,38 @@ public class HouseController {
     @PostMapping
     @ResponseStatus(CREATED)
     public HouseDTO create(@RequestBody HouseDTO dto) {
-        var house = service.create(
-                mapper.toHouse(dto)
-        );
-
-        return mapper.toDTO(house);
+        return Try.of(() -> mapper.toHouse(dto))
+                .andThen(service::create)
+                .map(mapper::toDTO)
+                .get();
     }
 
     @GetMapping("{id}")
     public HouseDTO read(@PathVariable Long id) {
-        return mapper.toDTO(
-                service.read(id)
-        );
+        return service.read(id)
+                .map(mapper::toDTO)
+                .get();
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
     public List<HouseDTO> readPaged(@RequestParam(required = false, defaultValue = "0") int pageNr,
                                     @RequestParam(required = false, defaultValue = "10") int size) {
-        return mapper.toDTO(
-                service.readPaged(pageNr, size)
-        );
+
+        return Try.of(() -> service.readPaged(pageNr, size))
+                .map(mapper::toDTO)
+                .get();
     }
 
     @PutMapping("{id}")
     public HouseDTO update(@PathVariable Long id, @RequestBody HouseDTO dto) {
-        return mapper.toDTO(
-                service.update(id, mapper.toHouse(dto))
-        );
+        return service.update(id, mapper.toHouse(dto))
+                .map(mapper::toDTO)
+                .get();
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 

@@ -1,11 +1,11 @@
 package lu.smarthome.housemanager.houses.service;
 
+import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import lu.smarthome.housemanager.houses.entity.House;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
 import lu.smarthome.housemanager.houses.repository.HouseRepository;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,30 +16,24 @@ public class HouseService {
 
     private final HouseRepository repository;
 
-    public House create(House h) {
-        return repository.save(
-                h.validToCreate()
-        );
+    public Try<House> create(House h) {
+        return Try.of(h::validToCreate)
+                .andThen(repository::save);
     }
 
-    public House update(Long id, House h){
-        return repository.save(
-                repository
-                        .findById(id)
-                        .orElseThrow(() -> new HouseNotFoundException(id))
-                        .update(h)
-        );
+    public Try<House> update(Long id, House h) {
+        return Try.of(() -> repository.findById(id))
+                .map(house -> house.orElseThrow(() -> new HouseNotFoundException(id)))
+                .andThen(house -> house.update(h))
+                .andThen(repository::save);
     }
 
-    // @PreAuthorize("hasRole('ROLE_ADMIN')") // won't work
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public House read(Long id) {
-        return repository
-                .findById(id)
-                .orElseThrow(() -> new HouseNotFoundException(id));
+    public Try<House> read(Long id) {
+        return Try.of(() -> repository.findById(id))
+                .map(house -> house.orElseThrow(() -> new HouseNotFoundException(id)));
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
