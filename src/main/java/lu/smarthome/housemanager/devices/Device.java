@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import static lu.smarthome.housemanager.devices.Device.Status.NEW;
+import static lu.smarthome.housemanager.devices.Device.Type.OTHER;
 
 @Entity
 @Getter
@@ -20,6 +21,10 @@ public class Device {
         ON, OFF, CONFIGURED, NEW
     }
 
+    public enum Type {
+        SENSOR, CAMERA, OTHER
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long   id;
@@ -27,6 +32,8 @@ public class Device {
     private String name;
     private String icon;
     private Status status = NEW;
+
+    private Type type = OTHER;
 
     public Device update(Device device) {
         if (device.name != null) {

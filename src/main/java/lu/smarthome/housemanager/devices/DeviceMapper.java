@@ -6,5 +6,6 @@ import org.mapstruct.Mapper;
 public interface DeviceMapper {
 
     DeviceDTO toDTO(Device device);
-    Device toDevice(DeviceDTO deviceDTO);
+    Device toDevice(DeviceDTO dto);
+    Device toDevice(DeviceRegistrationDTO dto);
 }

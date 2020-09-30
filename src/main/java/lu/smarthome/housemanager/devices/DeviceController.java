@@ -15,6 +15,14 @@ public class DeviceController {
 
     @PostMapping
     @ResponseStatus(CREATED)
+    public DeviceDTO register(@RequestBody DeviceRegistrationDTO dto) {
+        return mapper.toDTO(
+                deviceService.create(mapper.toDevice(dto))
+        );
+    }
+
+    @PostMapping
+    @ResponseStatus(CREATED)
     public DeviceDTO create(@RequestBody DeviceDTO dto) {
         return mapper.toDTO(
                 deviceService.create(mapper.toDevice(dto))
