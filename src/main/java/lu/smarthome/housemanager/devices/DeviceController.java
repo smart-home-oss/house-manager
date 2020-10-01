@@ -21,14 +21,6 @@ public class DeviceController {
         );
     }
 
-    @PostMapping
-    @ResponseStatus(CREATED)
-    public DeviceDTO create(@RequestBody DeviceDTO dto) {
-        return mapper.toDTO(
-                deviceService.create(mapper.toDevice(dto))
-        );
-    }
-
     @GetMapping("{id}")
     public DeviceDTO read(@PathVariable Long id) {
         return mapper.toDTO(

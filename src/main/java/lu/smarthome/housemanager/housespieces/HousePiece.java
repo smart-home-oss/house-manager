@@ -1,12 +1,12 @@
-package lu.smarthome.housemanager.houses.entity;
+package lu.smarthome.housemanager.housespieces;
 
 import lombok.Getter;
 import lombok.Setter;
-import lu.smarthome.housemanager.houses.exception.RoomValidationException;
+import lu.smarthome.housemanager.houses.exception.HousePieceValidationException;
 
 import javax.persistence.*;
 
-import static lu.smarthome.housemanager.houses.entity.HousePiece.Type.ROOM;
+import static lu.smarthome.housemanager.housespieces.HousePiece.Type.ROOM;
 
 @Entity
 @Table(name = "house_piece", schema = "smarthome_housemanager")
@@ -43,11 +43,11 @@ public class HousePiece {
 
     public HousePiece validBeforeCreation() {
         if (name == null) {
-            throw new RoomValidationException("Name of the room should be a non-empty string");
+            throw new HousePieceValidationException("Name of the room should be a non-empty string");
         }
 
         if (houseId == null || houseId < 1) {
-            throw new RoomValidationException("The house id should have a value bigger than ZERO");
+            throw new HousePieceValidationException("The house id should have a value bigger than ZERO");
         }
 
         return this;

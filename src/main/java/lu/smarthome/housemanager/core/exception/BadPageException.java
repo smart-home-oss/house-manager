@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.houses.exception;
+package lu.smarthome.housemanager.core.exception;
 
 import lu.smarthome.common.exceptions.BadRequestException;
 import lu.smarthome.common.exceptions.ExceptionDetail;

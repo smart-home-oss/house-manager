@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.houses.dto;
+package lu.smarthome.housemanager.housespieces;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-public class RoomDTO {
+public class HousePieceDTO {
 
     private Long id;
     private Long houseId;

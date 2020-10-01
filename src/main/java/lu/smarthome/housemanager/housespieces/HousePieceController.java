@@ -1,10 +1,6 @@
-package lu.smarthome.housemanager.houses.controller;
+package lu.smarthome.housemanager.housespieces;
 
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.HouseMapper;
-import lu.smarthome.housemanager.houses.dto.RoomDTO;
-import lu.smarthome.housemanager.houses.entity.HousePiece;
-import lu.smarthome.housemanager.houses.service.HousePieceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +15,11 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class HousePieceController {
 
     private final HousePieceService service;
-    private final HouseMapper       mapper;
+    private final HousePieceMapper  mapper;
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public RoomDTO create(@RequestBody RoomDTO dto) {
+    public HousePieceDTO create(@RequestBody HousePieceDTO dto) {
         return service
                 .create(mapper.toRoom(dto))
                 .map(mapper::toDTO)
@@ -36,7 +32,7 @@ public class HousePieceController {
     }
 
     @GetMapping("{id}")
-    public RoomDTO read(@PathVariable Long id) {
+    public HousePieceDTO read(@PathVariable Long id) {
         return service
                 .read(id)
                 .map(mapper::toDTO)
@@ -45,9 +41,9 @@ public class HousePieceController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.PARTIAL_CONTENT)
-    public List<RoomDTO> readPaged(@RequestParam(required = false, defaultValue = "0") int page,
-                                   @RequestParam(required = false, defaultValue = "10") int size,
-                                   @RequestParam(required = false) Long houseId) { // TODO, see if Optional can be used
+    public List<HousePieceDTO> readPaged(@RequestParam(required = false, defaultValue = "0") int page,
+                                         @RequestParam(required = false, defaultValue = "10") int size,
+                                         @RequestParam(required = false) Long houseId) { // TODO, see if Optional can be used
 
         final List<HousePiece> result;
 
@@ -61,7 +57,7 @@ public class HousePieceController {
     }
 
     @PutMapping("{id}")
-    public RoomDTO update(@PathVariable Long id, @RequestBody RoomDTO dto) {
+    public HousePieceDTO update(@PathVariable Long id, @RequestBody HousePieceDTO dto) {
         return service
                 .update(id, mapper.toRoom(dto))
                 .map(mapper::toDTO)

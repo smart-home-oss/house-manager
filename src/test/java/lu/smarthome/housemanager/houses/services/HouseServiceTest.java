@@ -1,9 +1,9 @@
 package lu.smarthome.housemanager.houses.services;
 
+import lu.smarthome.housemanager.houses.HouseRepository;
 import lu.smarthome.housemanager.houses.entity.House;
+import lu.smarthome.housemanager.houses.HouseService;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
-import lu.smarthome.housemanager.houses.service.HouseService;
-import lu.smarthome.housemanager.houses.repository.HouseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 class HouseServiceTest {
 
-    private HouseService houseService;
+    private HouseService    houseService;
     private HouseRepository houseRepository;
 
     @BeforeEach

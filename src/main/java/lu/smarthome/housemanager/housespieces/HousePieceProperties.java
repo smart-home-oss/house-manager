@@ -1,11 +1,11 @@
-package lu.smarthome.housemanager.houses;
+package lu.smarthome.housemanager.housespieces;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("app.room")
-public class RoomProperties {
+@ConfigurationProperties("app.house-piece")
+public class HousePieceProperties {
 
     private int pageMaxSize = 999;
 

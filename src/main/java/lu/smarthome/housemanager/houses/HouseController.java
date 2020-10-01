@@ -1,10 +1,7 @@
-package lu.smarthome.housemanager.houses.controller;
+package lu.smarthome.housemanager.houses;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.HouseMapper;
-import lu.smarthome.housemanager.houses.dto.HouseDTO;
-import lu.smarthome.housemanager.houses.service.HouseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

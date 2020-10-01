@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class RoomValidationException extends BadRequestException {
+public class NoHousePieceAssignedDeviceException extends BadRequestException {
 
-    public RoomValidationException(String m) {
+    public NoHousePieceAssignedDeviceException(String m) {
         super(ExceptionDetail.builder().message(m).build());
     }
 }

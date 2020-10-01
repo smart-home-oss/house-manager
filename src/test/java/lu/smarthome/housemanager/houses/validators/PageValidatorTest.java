@@ -1,9 +1,9 @@
 package lu.smarthome.housemanager.houses.validators;
 
-import lu.smarthome.housemanager.houses.RoomProperties;
-import lu.smarthome.housemanager.houses.exception.BadPageException;
-import lu.smarthome.housemanager.houses.exception.BadPageSizeException;
-import lu.smarthome.housemanager.houses.validator.PageValidator;
+import lu.smarthome.housemanager.core.exception.BadPageException;
+import lu.smarthome.housemanager.core.exception.BadPageSizeException;
+import lu.smarthome.housemanager.housespieces.HousePieceProperties;
+import lu.smarthome.housemanager.housespieces.PageValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PageValidatorTest {
 
-    private       PageValidator  validator;
-    private final RoomProperties properties = new RoomProperties();
+    private       PageValidator        validator;
+    private final HousePieceProperties properties = new HousePieceProperties();
 
     @BeforeEach
     void setUp() {

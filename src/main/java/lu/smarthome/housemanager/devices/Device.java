@@ -2,7 +2,7 @@ package lu.smarthome.housemanager.devices;
 
 import lombok.Getter;
 import lombok.Setter;
-import lu.smarthome.housemanager.houses.exception.NoRoomAssignedDeviceException;
+import lu.smarthome.housemanager.houses.exception.NoHousePieceAssignedDeviceException;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -61,7 +61,7 @@ public class Device {
         }
 
         if (housePieceId == null || housePieceId < 0) {
-            throw new NoRoomAssignedDeviceException("The room id should be a value bigger than ZERO");
+            throw new NoHousePieceAssignedDeviceException("The room id should be a value bigger than ZERO");
         }
 
         return this;

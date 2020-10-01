@@ -1,6 +1,6 @@
 package lu.smarthome.housemanager.devices;
 
-import lu.smarthome.housemanager.houses.exception.NoRoomAssignedDeviceException;
+import lu.smarthome.housemanager.houses.exception.NoHousePieceAssignedDeviceException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +15,7 @@ class DeviceTest {
 
         device.setName("name");
 
-        assertThrows(NoRoomAssignedDeviceException.class, device::validToCreate);
+        assertThrows(NoHousePieceAssignedDeviceException.class, device::validToCreate);
 
         device.setHousePieceId(Long.MAX_VALUE);
 

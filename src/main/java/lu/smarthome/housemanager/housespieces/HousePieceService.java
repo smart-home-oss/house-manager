@@ -1,11 +1,8 @@
-package lu.smarthome.housemanager.houses.service;
+package lu.smarthome.housemanager.housespieces;
 
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.entity.HousePiece;
-import lu.smarthome.housemanager.houses.repository.HousePieceRepository;
-import lu.smarthome.housemanager.houses.validator.PageValidator;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
