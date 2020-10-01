@@ -5,6 +5,9 @@ import lu.smarthome.housemanager.devices.data.Device;
 import lu.smarthome.housemanager.devices.DeviceService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
@@ -21,6 +24,22 @@ public class DeviceController {
         return mapper.toDTO(
                 deviceService.create(mapper.toDevice(dto))
         );
+    }
+
+    @GetMapping
+    public List<DeviceDTO> readAll(@RequestParam(required = false, defaultValue = "false") boolean unassigned) {
+        List<DeviceDTO> result = new ArrayList<>();
+        Iterable<Device> devices;
+
+        if(unassigned) {
+            devices = deviceService.readAllUnassigned();
+        } else {
+            devices = deviceService.readAll();
+        }
+
+        devices.forEach(d -> result.add(mapper.toDTO(d)));
+
+        return result;
     }
 
     @GetMapping("{id}")

@@ -24,6 +24,10 @@ public class DeviceService {
                 .orElseThrow(() -> new NoDeviceFoundException(id));
     }
 
+    public Iterable<Device> readAll() {
+        return deviceRepository.findAll();
+    }
+
     public Device update(Long id, Device d) {
         return deviceRepository.save(
                 deviceRepository
@@ -35,5 +39,9 @@ public class DeviceService {
 
     public void delete(Long id) {
         deviceRepository.deleteById(id);
+    }
+
+    public Iterable<Device> readAllUnassigned() {
+        return deviceRepository.findAllByHousePieceIdIsNull();
     }
 }
