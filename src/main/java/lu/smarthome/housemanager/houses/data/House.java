@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.houses.entity;
+package lu.smarthome.housemanager.houses.data;
 
 import lombok.*;
 import lu.smarthome.housemanager.houses.exception.HouseValidationException;

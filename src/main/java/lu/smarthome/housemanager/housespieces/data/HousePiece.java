@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.housespieces;
+package lu.smarthome.housemanager.housespieces.data;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,7 @@ import lu.smarthome.housemanager.houses.exception.HousePieceValidationException;
 
 import javax.persistence.*;
 
-import static lu.smarthome.housemanager.housespieces.HousePiece.Type.ROOM;
+import static lu.smarthome.housemanager.housespieces.data.HousePiece.Type.ROOM;
 
 @Entity
 @Table(name = "house_piece", schema = "smarthome_housemanager")

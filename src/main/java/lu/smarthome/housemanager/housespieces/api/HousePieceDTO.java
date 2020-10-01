@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.housespieces;
+package lu.smarthome.housemanager.housespieces.api;
 
 import lombok.Getter;
 import lombok.Setter;

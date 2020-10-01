@@ -1,7 +1,6 @@
-package lu.smarthome.housemanager.devices;
+package lu.smarthome.housemanager.devices.data;
 
 
-import lu.smarthome.housemanager.devices.Device;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

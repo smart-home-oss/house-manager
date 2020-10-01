@@ -3,6 +3,8 @@ package lu.smarthome.housemanager.housespieces;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
+import lu.smarthome.housemanager.housespieces.data.HousePiece;
+import lu.smarthome.housemanager.housespieces.data.HousePieceRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 

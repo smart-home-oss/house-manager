@@ -1,5 +1,7 @@
-package lu.smarthome.housemanager.housespieces;
+package lu.smarthome.housemanager.housespieces.api;
 
+import lu.smarthome.housemanager.housespieces.api.HousePieceDTO;
+import lu.smarthome.housemanager.housespieces.data.HousePiece;
 import org.mapstruct.Mapper;
 
 import java.util.List;

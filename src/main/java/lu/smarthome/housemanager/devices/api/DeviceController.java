@@ -1,6 +1,8 @@
-package lu.smarthome.housemanager.devices;
+package lu.smarthome.housemanager.devices.api;
 
 import lombok.RequiredArgsConstructor;
+import lu.smarthome.housemanager.devices.data.Device;
+import lu.smarthome.housemanager.devices.DeviceService;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -10,7 +12,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("${app.api.version.v1}/devices")
 public class DeviceController {
 
-    private final DeviceMapper mapper;
+    private final DeviceMapper  mapper;
     private final DeviceService deviceService;
 
     @PostMapping

@@ -1,5 +1,6 @@
-package lu.smarthome.housemanager.devices;
+package lu.smarthome.housemanager.devices.api;
 
+import lu.smarthome.housemanager.devices.data.Device;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,6 +1,8 @@
 package lu.smarthome.housemanager.devices;
 
 import lombok.RequiredArgsConstructor;
+import lu.smarthome.housemanager.devices.data.Device;
+import lu.smarthome.housemanager.devices.data.DeviceRepository;
 import lu.smarthome.housemanager.houses.exception.NoDeviceFoundException;
 import org.springframework.stereotype.Service;
 

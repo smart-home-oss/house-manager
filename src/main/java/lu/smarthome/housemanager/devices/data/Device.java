@@ -1,7 +1,8 @@
-package lu.smarthome.housemanager.devices;
+package lu.smarthome.housemanager.devices.data;
 
 import lombok.Getter;
 import lombok.Setter;
+import lu.smarthome.housemanager.devices.BadDeviceNameException;
 import lu.smarthome.housemanager.houses.exception.NoHousePieceAssignedDeviceException;
 
 import javax.persistence.Entity;
@@ -9,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import static lu.smarthome.housemanager.devices.Device.Status.NEW;
-import static lu.smarthome.housemanager.devices.Device.Type.OTHER;
+import static lu.smarthome.housemanager.devices.data.Device.Status.NEW;
+import static lu.smarthome.housemanager.devices.data.Device.Type.OTHER;
 
 @Entity
 @Getter

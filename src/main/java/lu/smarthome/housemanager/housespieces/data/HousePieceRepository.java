@@ -1,7 +1,6 @@
-package lu.smarthome.housemanager.housespieces;
+package lu.smarthome.housemanager.housespieces.data;
 
 import io.vavr.control.Option;
-import lu.smarthome.housemanager.housespieces.HousePiece;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;

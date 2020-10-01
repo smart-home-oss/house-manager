@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.houses;
+package lu.smarthome.housemanager.houses.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

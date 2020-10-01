@@ -1,12 +1,14 @@
 package lu.smarthome.housemanager.devices;
 
 
+import lu.smarthome.housemanager.devices.data.Device;
+import lu.smarthome.housemanager.devices.data.DeviceRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static lu.smarthome.housemanager.devices.Device.Status.NEW;
+import static lu.smarthome.housemanager.devices.data.Device.Status.NEW;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
