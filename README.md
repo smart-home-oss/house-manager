@@ -21,3 +21,20 @@ They are split if dedicated files per topic.
 
 The files that are launching the required dependencies 
 are located in a dedicated repository: [smart-home-oss/infra](https://github.com/smart-home-oss/infra)
+
+```text
+Description:
+
+Method springSecurityFilterChain in org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration required a bean of type 'org.springframework.security.oauth2.jwt.JwtDecoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.oauth2.jwt.JwtDecoder' in your configuration.
+```
+
+```properties
+# You need to declare and resource server which will create the JWTDecoder
+spring.security.oauth2.resourceserver.jwt.issuer-uri=${OAUTH_ISSUER_URI:http://keycloak.localhost/auth/realms/smart-home-oss}
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri=${OAUTH_JWK_URI:http://keycloak.localhost/auth/realms/smart-home-oss/protocol/openid-connect/certs}
+```
