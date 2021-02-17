@@ -1,9 +1,7 @@
-package lu.smarthome.housemanager.houses;
+package lu.smarthome.housemanager.houses.model;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.data.House;
-import lu.smarthome.housemanager.houses.data.HouseRepository;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

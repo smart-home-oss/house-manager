@@ -2,7 +2,7 @@ package lu.smarthome.housemanager.houses.api;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
-import lu.smarthome.housemanager.houses.HouseService;
+import lu.smarthome.housemanager.houses.model.HouseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

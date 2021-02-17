@@ -1,6 +1,6 @@
 package lu.smarthome.housemanager.houses.entities;
 
-import lu.smarthome.housemanager.houses.data.House;
+import lu.smarthome.housemanager.houses.model.House;
 import lu.smarthome.housemanager.houses.exception.HouseValidationException;
 import org.junit.jupiter.api.Test;
 

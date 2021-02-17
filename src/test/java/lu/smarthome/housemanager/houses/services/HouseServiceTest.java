@@ -1,8 +1,8 @@
 package lu.smarthome.housemanager.houses.services;
 
-import lu.smarthome.housemanager.houses.data.HouseRepository;
-import lu.smarthome.housemanager.houses.data.House;
-import lu.smarthome.housemanager.houses.HouseService;
+import lu.smarthome.housemanager.houses.model.HouseRepository;
+import lu.smarthome.housemanager.houses.model.House;
+import lu.smarthome.housemanager.houses.model.HouseService;
 import lu.smarthome.housemanager.houses.exception.HouseNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

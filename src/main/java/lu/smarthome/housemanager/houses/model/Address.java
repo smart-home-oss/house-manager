@@ -1,4 +1,4 @@
-package lu.smarthome.housemanager.houses.data;
+package lu.smarthome.housemanager.houses.model;
 
 import lombok.*;
 

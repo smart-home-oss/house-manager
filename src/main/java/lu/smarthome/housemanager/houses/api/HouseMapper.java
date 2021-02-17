@@ -1,6 +1,6 @@
 package lu.smarthome.housemanager.houses.api;
 
-import lu.smarthome.housemanager.houses.data.House;
+import lu.smarthome.housemanager.houses.model.House;
 import org.mapstruct.Mapper;
 
 import java.util.List;
